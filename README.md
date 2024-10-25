@@ -54,15 +54,15 @@ This Flask-based project monitors real-time weather conditions in major Indian m
 - API Call Interval: Modify the API call interval to change how frequently weather data is fetched. The default interval is set to 5 minutes.
 - Additional Parameters: Extend the application to support more weather parameters like humidity and wind speed by updating the API requests and database schema.
 
+
 ## Project Structure
 
-
--> app.py               # Main application logic
--> static/
-   - styles.css       # Styling for the web interface
--> templates/
-   - index.html       # Main HTML page
--> README.md            # Project documentation
+- **app.py** - Main application logic
+- **static/** - Folder for static files
+  - **styles.css** - Styling for the web interface
+- **templates/** - Folder for HTML templates
+  - **index.html** - Main HTML page
+- **README.md** - Project documentation
 
 
 ## API Documentation
