@@ -56,14 +56,13 @@ This Flask-based project monitors real-time weather conditions in major Indian m
 
 ## Project Structure
 
-```plaintext
+
 ├── app.py               # Main application logic
 ├── static/
 │   └── styles.css       # Styling for the web interface
 ├── templates/
 │   └── index.html       # Main HTML page
 ├── README.md            # Project documentation
-
 
 
 ## API Documentation
