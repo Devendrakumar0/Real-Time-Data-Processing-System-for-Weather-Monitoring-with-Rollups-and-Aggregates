@@ -12,8 +12,7 @@ This Flask-based project monitors real-time weather conditions in major Indian m
 - [Configuration](#configuration)
 - [Project Structure](#project-structure)
 - [API Documentation](#api-documentation)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ---
 
@@ -39,5 +38,35 @@ This Flask-based project monitors real-time weather conditions in major Indian m
 ## Installation
 - pip install flask
 - pip install pymysql
+- Setup MySQL Database
+      Start MySQL and create a database for the project.
+
+
+## USAGE
+- Access the Web Interface Open your browser and go to http://localhost:5000.
+
+- Set Alerts You can set temperature alerts by selecting a city and specifying a threshold in Celsius. Alerts will trigger if the threshold is exceeded.
+
+- View Daily Summaries Check daily weather summaries for each city, including temperature trends and dominant weather conditions.
+
+## Configuration
+
+- API Call Interval: Modify the API call interval to change how frequently weather data is fetched. The default interval is set to 5 minutes.
+- Additional Parameters: Extend the application to support more weather parameters like humidity and wind speed by updating the API requests and database schema.
+
+## Project Structure
+├── app.py               # Main application logic
+├── static/
+│   └── styles.css       # Styling for the web interface
+├── templates/
+│   └── index.html       # Main HTML page
+├── README.md            # Project documentation
+
+## API Documentation
+- GET /
+      Fetch and display real-time weather data and daily summaries for all cities.
+
+- POST /set_alert
+      Set a weather alert with a city and a temperature threshold.
 
 
