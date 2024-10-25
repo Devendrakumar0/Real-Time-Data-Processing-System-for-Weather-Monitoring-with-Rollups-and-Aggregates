@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        Indian Metro Cities Weather Dashboard
+    </header>
+    <div class="container">
+        <h2>Real-Time Weather Data</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Temperature (°C)</th>
+                    <th>Feels Like (°C)</th>
+                    <th>Condition</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for city, data in weather_data.items() %}
+                    <tr>
+                        <td>{{ city }}</td>
+                        <td>{{ data.temperature }}</td>
+                        <td>{{ data.feels_like }}</td>
+                        <td>{{ data.weather }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Daily Weather Summaries</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Date</th>
+                    <th>Average Temp (°C)</th>
+                    <th>Max Temp (°C)</th>
+                    <th>Min Temp (°C)</th>
+                    <th>Dominant Condition</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for summary in summaries %}
+                    <tr>
+                        <td>{{ summary.city }}</td>
+                        <td>{{ summary.date }}</td>
+                        <td>{{ summary.avg_temp }}</td>
+                        <td>{{ summary.max_temp }}</td>
+                        <td>{{ summary.min_temp }}</td>
+                        <td>{{ summary.dominant_condition }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Set Weather Alert</h2>
+        <form method="POST" action="/set_alert">
+            <label for="city">City:</label>
+            <select name="city" id="city">
+                {% for city in weather_data %}
+                    <option value="{{ city }}">{{ city }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="threshold">Temperature Threshold (°C):</label>
+            <input type="number" name="threshold" id="threshold" required>
+
+            <button type="submit">Set Alert</button>
+        </form>
+
+        {% if alerts %}
+            <h2>Active Alerts</h2>
+            <ul>
+                {% for alert in alerts %}
+                    <li class="alert">Alert for {{ alert.city }}: Temperature exceeded {{ alert.threshold }}°C at {{ alert.triggered_at }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
